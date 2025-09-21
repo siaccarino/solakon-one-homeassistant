@@ -2,6 +2,7 @@ from os import environ
 import pytest
 from custom_components.solakon_one import SolakonModbusHub
 from unittest.mock import MagicMock
+import asyncio
 
 
 @pytest.fixture
@@ -17,4 +18,7 @@ def test_modbus_connection(hass):
         int(environ["SOLAKON_ONE_MODBUS_SLAVE_ID"]),
         10,
     )
-    assert client.connected
+
+    result = asyncio.run(client.async_test_connection())
+
+    assert result
