@@ -19,6 +19,10 @@ RUN pip install --no-input --break-system-packages \
 # map the host user to the container user
 ARG UID=1000
 ARG GID=1000
+
+## since the host user and group ids might already be settled
+## adapt the names so the developer observe a consitsent view
+## on the repository and can operate seamlessly with git
 RUN if getent group $GID; then \
         groupmod -n developer $(getent group $GID | cut -d: -f1); \ 
     else \
