@@ -41,3 +41,4 @@ COPY .bashrc /home/developer/.bashrc
 RUN chsh -s /bin/bash developer
 
 USER developer
+WORKDIR /workspaces/solakon-one-homeassistant
