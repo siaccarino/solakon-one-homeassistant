@@ -15,7 +15,8 @@
     ],
     "mounts": [
         "source=${localEnv:HOME}/.gitconfig,target=/home/developer/.gitconfig,type=bind,consistency=cached",
-        "source=${localEnv:HOME}/.ssh,target=/home/developer/.ssh,type=bind,consistency=cached"
+        "source=${localEnv:HOME}/.ssh,target=/home/developer/.ssh,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.git-credentials,target=/home/developer/.git-credentials,type=bind,consistency=cached"
     ],
     "workspaceFolder": "/workspaces/solakon-one-homeassistant",
     "remoteUser": "developer",
