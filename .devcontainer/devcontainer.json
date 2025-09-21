@@ -1,5 +1,5 @@
 {
-    "name" : "solakon-dev",
+    "name": "solakon-dev",
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
@@ -9,7 +9,9 @@
     },
     "runArgs": [
         "--hostname",
-        "solakon-dev"
+        "solakon-dev",
+        "--env-file",
+        ".devcontainer/container.env"
     ],
     "mounts": [
         "source=${localEnv:HOME}/.gitconfig,target=/home/developer/.gitconfig,type=bind,consistency=cached",
@@ -18,7 +20,8 @@
     "workspaceFolder": "/workspaces/solakon-one-homeassistant",
     "remoteUser": "developer",
     "remoteEnv": {
-        "PYTHONPATH": "${containerWorkspaceFolder}/solakon-one-homeassistant/custom_components"
+        "PYTHONPATH": "${containerWorkspaceFolder}/solakon-one-homeassistant/custom_components",
+        "PYTHONPYCACHEPREFIX": "${containerWorkspaceFolder}/.caches/python"
     },
     "customizations": {
         "vscode": {
@@ -30,7 +33,15 @@
                 "charliermarsh.ruff"
             ],
             "settings": {
-                "terminal.integrated.cwd": "/workspaces/solakon-one-homeassistant"
+                "terminal.integrated.cwd": "/workspaces/solakon-one-homeassistant",
+                "python.analysis.typeCheckingMode": "standard",
+                "python.testing.pytestArgs": [
+                    "tests"
+                ],
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "pythonTestExplorer.testFramework": "pytest",
+                "python.analysis.inlayHints.pytestParameters": true
             }
         }
     }

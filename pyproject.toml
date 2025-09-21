@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+cache_dir = ".caches/pytest"
+
+[tool.ruff]
+# ignore = ["A10"]
+line-length = 100
+cache-dir = ".caches/ruff"
